@@ -1,0 +1,114 @@
+\documentclass[]{article}
+
+\usepackage{tabu}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{graphicx}
+
+\setlength{\tabcolsep}{12pt}
+\renewcommand{\arraystretch}{2}
+
+%opening
+\title{4-bit Arithmetic Logic Unit}
+\author{Group-3}
+
+\begin{document}
+	
+	\maketitle
+	
+	\newpage
+	%--------------------------------------------------------arithmetic
+	\section{Designing an ALU}
+	
+	\textbf{Truth Table : Arithmetic Operations}
+	\begin{center}
+		\begin{tabular}{ |c|c|c|c|c|c| } 
+			\hline
+			$cs_2$ & $cs_1$ & $cs_0$ & Arithmetic Operation & $x_i$ & $y_i$  \\
+			\hline
+			
+			\hline
+			0 & 0 & 0 & Transfer A & $A_i$ & 0 \\
+			\hline
+
+			\hline
+			0 & 0 & 1 & Increment A & $A_i$ & 0 \\
+			\hline
+			
+			\hline
+			0 & 1 & 0 & Subtraction with Borrow & $A_i$ & $\overline{B_i}$ \\
+			\hline
+			
+			\hline
+			0 & 1 & 1 & Subtraction & $A_i$ & $\overline{B_i}$ \\
+			\hline
+		\end{tabular}
+	\end{center}
+	
+	
+	
+	Subtract with borrow explanation:\newline
+	$=A-B-1$ \newline
+	$=(A+\overline{B}+1)-1$ \newline
+	$=A+\overline{B}$ \newline
+	
+	So, $Y=CS_1\overline{B_i}$
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width = 0.5\textwidth]{image/ckt1.png}
+		\caption{
+		$Y=CS_1\overline{B_i}$
+		}
+		\label{fig:ckt1}
+		
+	\end{figure}
+	%--------------------------------------------------------arithmetic
+	
+	%--------------------------------------------------------logic
+	\section{Design of Arithmetic Logic Unit}
+	\textbf{Truth Table : Logical Operations}
+		\begin{center}
+		\begin{tabular}{ |c|c|c|c|c|c|c| } 
+			\hline
+			$cs_2$ & $cs_1$ & $cs_0$ & $x_i$ & $y_i$ & $f_i=X_i \oplus Y_i$ & Operation \\
+			\hline
+			
+			\hline
+			1 & 0 & 0 & $A_i$ & $0$ & $A_i$ & OR \\
+			\hline
+			
+			\hline
+			1 & 0 & 1 & $A_i$ & $0$ & $A_i+1$ & OR \\
+			\hline
+			
+			\hline
+			1 & 1 & 0 & $A_i$ & $B_i$ & $A_i+B_i+1$ & AND \\
+			\hline
+			
+			\hline
+			1 & 1 & 1 & $A_i$ & $B_i$ & $A_i+B_i$ & AND\\
+			\hline
+		\end{tabular}
+	\end{center}
+
+	\textbf{Explanation:}\newline
+	we can't modify $Y_i$ because that would change the arithmetic operations
+	and neither can omit $A_i$ in any input, So we change $X_i$\newline
+	Let,
+
+	$X_i=A_i+K_i$ \newline
+	$F_i=X_i \oplus Y_i$ \newline
+	$F_i=X_i \oplus 0$ \newline
+	$F_i=X_i$ \newline
+	$F_i=A_i+K_i$\newline
+	
+	But the desired output is $A_i+B_i$. So putting $K_i=B_i$ \newline
+	$F_i=X_i \oplus Y_i$\newline
+	$F_i=(A_i \oplus K_i) \oplus \overline{B_i}$\newline
+	$F_i=(A_i \oplus K_i)B_i + \overline{(A_i \oplus K_i)} .\overline{B_i}$\newline
+	$F_i=A_iB_i + K_iB_i + \overline{A_i}.\overline{K_i}.\overline{B_i}$ \newline Here our desired operation is $A_iB_i$ \newline
+	So, $A_iB_i + K_iB_i + \overline{A_i}.\overline{K_i}.\overline{B_i} = A_iB_i$\newline if $K_i=\overline{B_i}$	Then $F_i=A_iB_i$
+	
+	
+	%--------------------------------------------------------logic	
+\end{document}
