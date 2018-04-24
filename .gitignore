@@ -2,7 +2,6 @@
 *.log
 *.synctex.gz
 *.txt
-*.pdf
 *.synctex
 *.toc
 *.xml
