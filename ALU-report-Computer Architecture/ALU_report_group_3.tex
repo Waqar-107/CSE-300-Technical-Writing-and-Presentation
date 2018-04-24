@@ -82,18 +82,18 @@
 			\hline
 			
 			\hline
-			1 & 1 & 0 & $A_i$ & $B_i$ & $A_i+B_i+1$ & AND \\
+			1 & 1 & 0 & $A_i$ & $B_i$ & $A_i-B_i-1$ & AND \\
 			\hline
 			
 			\hline
-			1 & 1 & 1 & $A_i$ & $B_i$ & $A_i+B_i$ & AND\\
+			1 & 1 & 1 & $A_i$ & $B_i$ & $A_i-B_i$ & AND\\
 			\hline
 		\end{tabular}
 	\end{center}
 
 	\textbf{Explanation:}\newline
 	we can't modify $Y_i$ because that would change the arithmetic operations
-	and neither can omit $A_i$ in any input, So we change $X_i$\newline
+	and neither can omit $A_i$ in any input, So we change $X_i$,\newline
 	Let,
 
 	$X_i=A_i+K_i$ \newline
@@ -107,7 +107,49 @@
 	$F_i=(A_i \oplus K_i) \oplus \overline{B_i}$\newline
 	$F_i=(A_i \oplus K_i)B_i + \overline{(A_i \oplus K_i)} .\overline{B_i}$\newline
 	$F_i=A_iB_i + K_iB_i + \overline{A_i}.\overline{K_i}.\overline{B_i}$ \newline Here our desired operation is $A_iB_i$ \newline
-	So, $A_iB_i + K_iB_i + \overline{A_i}.\overline{K_i}.\overline{B_i} = A_iB_i$\newline if $K_i=\overline{B_i}$	Then $F_i=A_iB_i$
+	So, $A_iB_i + K_iB_i + \overline{A_i}.\overline{K_i}.\overline{B_i} = A_iB_i$\newline if $K_i=\overline{B_i}$	Then $F_i=A_iB_i$\newline
+	So we need $K_i=B_i$ when we will do OR operation and $K_i=\overline{B_i}$ for AND operation.
+	
+	\begin{center}
+		\begin{tabular}{|c|c|c|c|}
+			\hline
+			$cs_2$ & $cs_1$ & $cs_0$ & $B$ \\
+			\hline
+			
+			\hline
+			$1$ & $0$ & $0$ & $B_i$ \\
+			\hline
+			
+			\hline
+			$1$ & $0$ & $1$ & $B_i$ \\
+			\hline
+			
+			\hline
+			$1$ & $1$ & $0$ & $\overline{B_i}$ \\
+			\hline
+			
+			\hline
+			$1$ & $1$ & $1$ & $\overline{B_i}$ \\
+			\hline
+		\end{tabular}
+	\end{center}
+	So from the truth table we can derive, \newline
+	$X_i=A_i+CS_2(\overline{CS_1}.B(CS_0 + \overline{CS_0}+CS_1.\overline{B_i}) )$ 
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width = 0.5\textwidth]{image/ckt2.png}
+		\caption{
+			$X_i=A_i+CS_2(\overline{CS_1}.B(CS_0 + \overline{CS_0}+CS_1.\overline{B_i}) )$
+		}
+		\label{fig:ckt1}
+		
+	\end{figure}
+
+	\section{Final Diagram}
+	$X_i=A_i+CS_2(\overline{CS_1}.B(CS_0 + \overline{CS_0}+CS_1.\overline{B_i}) )$\newline
+	$Y=CS_1\overline{B_i}$\newline
+	$C_{out}=\overline{CS_2}.C_i$ 
 	
 	
 	%--------------------------------------------------------logic	
