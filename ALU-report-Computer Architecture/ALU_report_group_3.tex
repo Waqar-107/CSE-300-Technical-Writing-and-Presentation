@@ -134,20 +134,22 @@
 		\end{tabular}
 	\end{center}
 	So from the truth table we can derive, \newline
-	$X_i=A_i+CS_2(\overline{CS_1}.B(CS_0 + \overline{CS_0}+CS_1.\overline{B_i}) )$ 
+	$X_i=A_i+CS_2(\overline{CS_1}.B(CS_0 + \overline{CS_0})+CS_1.\overline{B_i}(CS_0 + \overline{CS_0})) )$ \newline
+		$X_i=A_i+CS_2(CS_1\oplus B_i)$ \newline
 	
 	\begin{figure}[h]
 		\centering
 		\includegraphics[width = 0.5\textwidth]{image/ckt2.png}
 		\caption{
-			$X_i=A_i+CS_2(\overline{CS_1}.B(CS_0 + \overline{CS_0}+CS_1.\overline{B_i}) )$
+				$X_i=A_i+CS_2(CS_1\oplus B_i)$ \newline
 		}
 		\label{fig:ckt1}
 		
 	\end{figure}
 
 	\section{Final Diagram}
-	$X_i=A_i+CS_2(\overline{CS_1}.B(CS_0 + \overline{CS_0}+CS_1.\overline{B_i}) )$\newline
+		$X_i=A_i+CS_2(\overline{CS_1}.B(CS_0 + \overline{CS_0})+CS_1.\overline{B_i}(CS_0 + \overline{CS_0})) )$ \newline
+		$X_i=A_i+CS_2(CS_1\oplus B_i)$ \newline
 	$Y=CS_1\overline{B_i}$\newline
 	$C_{out}=\overline{CS_2}.C_i$ 
 	
