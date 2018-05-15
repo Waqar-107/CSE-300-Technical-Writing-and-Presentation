@@ -1,4 +1,4 @@
-\documentclass[]{article}
+\documentclass[12pt]{extarticle}
 
 \usepackage{tabu}
 \usepackage{amsfonts}
@@ -7,6 +7,10 @@
 
 \setlength{\tabcolsep}{12pt}
 \renewcommand{\arraystretch}{2}
+
+\setlength{\parindent}{5em}
+\setlength{\parskip}{1em}
+\renewcommand{\baselinestretch}{1.5}
 
 %opening
 \title{4-bit Arithmetic Logic Unit}
@@ -30,7 +34,7 @@
 			\hline
 			0 & 0 & 0 & Transfer A & $A_i$ & 0 \\
 			\hline
-
+			
 			\hline
 			0 & 0 & 1 & Increment A & $A_i$ & 0 \\
 			\hline
@@ -43,21 +47,15 @@
 			0 & 1 & 1 & Subtraction & $A_i$ & $\overline{B_i}$ \\
 			\hline
 		\end{tabular}
-	\end{center}
-	
-	
-	
-	Subtract with borrow explanation:\newline
+	\end{center}Subtract with borrow explanation:\newline
 	$=A-B-1$ \newline
 	$=(A+\overline{B}+1)-1$ \newline
-	$=A+\overline{B}$ \newline
-	
-	So, $Y=CS_1\overline{B_i}$
+	$=A+\overline{B}$ \newline So, $Y=CS_1\overline{B_i}$
 	\begin{figure}[h]
 		\centering
 		\includegraphics[width = 0.5\textwidth]{image/ckt1.png}
 		\caption{
-		$Y=CS_1\overline{B_i}$
+			$Y=CS_1\overline{B_i}$
 		}
 		\label{fig:ckt1}
 		
@@ -67,7 +65,7 @@
 	%--------------------------------------------------------logic
 	\section{Design of Arithmetic Logic Unit}
 	\textbf{Truth Table : Logical Operations}
-		\begin{center}
+	\begin{center}
 		\begin{tabular}{ |c|c|c|c|c|c|c| } 
 			\hline
 			$cs_2$ & $cs_1$ & $cs_0$ & $x_i$ & $y_i$ & $f_i=X_i \oplus Y_i$ & Operation \\
@@ -89,20 +87,14 @@
 			1 & 1 & 1 & $A_i$ & $B_i$ & $A_i-B_i$ & AND\\
 			\hline
 		\end{tabular}
-	\end{center}
-
-	\textbf{Explanation:}\newline
+	\end{center}\textbf{Explanation:}\newline
 	we can't modify $Y_i$ because that would change the arithmetic operations
 	and neither can omit $A_i$ in any input, So we change $X_i$,\newline
-	Let,
-
-	$X_i=A_i+K_i$ \newline
+	Let, $X_i=A_i+K_i$ \newline
 	$F_i=X_i \oplus Y_i$ \newline
 	$F_i=X_i \oplus 0$ \newline
 	$F_i=X_i$ \newline
-	$F_i=A_i+K_i$\newline
-	
-	But the desired output is $A_i+B_i$. So putting $K_i=B_i$ \newline
+	$F_i=A_i+K_i$\newline But the desired output is $A_i+B_i$. So putting $K_i=B_i$ \newline
 	$F_i=X_i \oplus Y_i$\newline
 	$F_i=(A_i \oplus K_i) \oplus \overline{B_i}$\newline
 	$F_i=(A_i \oplus K_i)B_i + \overline{(A_i \oplus K_i)} .\overline{B_i}$\newline
@@ -135,21 +127,21 @@
 	\end{center}
 	So from the truth table we can derive, \newline
 	$X_i=A_i+CS_2(\overline{CS_1}.B(CS_0 + \overline{CS_0})+CS_1.\overline{B_i}(CS_0 + \overline{CS_0})) )$ \newline
-		$X_i=A_i+CS_2(CS_1\oplus B_i)$ \newline
+	$X_i=A_i+CS_2(CS_1\oplus B_i)$ \newline
 	
 	\begin{figure}[h]
 		\centering
 		\includegraphics[width = 0.5\textwidth]{image/ckt2.png}
 		\caption{
-				$X_i=A_i+CS_2(CS_1\oplus B_i)$ \newline
+			$X_i=A_i+CS_2(CS_1\oplus B_i)$ \newline
 		}
 		\label{fig:ckt1}
 		
 	\end{figure}
-
+	
 	\section{Final Diagram}
-		$X_i=A_i+CS_2(\overline{CS_1}.B(CS_0 + \overline{CS_0})+CS_1.\overline{B_i}(CS_0 + \overline{CS_0})) )$ \newline
-		$X_i=A_i+CS_2(CS_1\oplus B_i)$ \newline
+	$X_i=A_i+CS_2(\overline{CS_1}.B(CS_0 + \overline{CS_0})+CS_1.\overline{B_i}(CS_0 + \overline{CS_0})) )$ \newline
+	$X_i=A_i+CS_2(CS_1\oplus B_i)$ \newline
 	$Y=CS_1\overline{B_i}$\newline
 	$C_{out}=\overline{CS_2}.C_i$ 
 	
