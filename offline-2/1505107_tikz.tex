@@ -1,18 +1,19 @@
 \documentclass[14pt]{article}
 
 \usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{color}
 \usepackage{tikz}
 
 %opening
 \title{Pythagorean Theorem}
 \author{1505107}
 
+
 \begin{document}
 
 \maketitle
+
 \definecolor{lightViolet}{RGB}{164,117,169}
+\definecolor{skyBlue}{RGB}{215,235,242}
 
 \section{Introduction}
 In this document, we present the very famous theorem in mathematics: \textit{ Pythagorean
@@ -32,23 +33,45 @@ representation of the theorem.\\\\
 \begin{figure}[h]
 	\centering
 	
-	
-	
 	\begin{tikzpicture}[scale=0.75]
 	
+	\draw[fill=skyBlue,skyBlue] (0,-0.5) rectangle (10,7); 
 	
-	\draw[help lines,step=1cm,gray,very thin] (0,0) grid (10,8); 
-	
+	%----------------------------------------------------------
 	\draw[fill=cyan,cyan] (2,0) rectangle (4.5,2.5);
+	\node[color=violet] at (3.25,1.25) {$c^2$};
+	
 	\node[color=violet] at (5,1) {=};
+	
 	\draw[fill=lightViolet,lightViolet] (5.5,0.50) rectangle (6.5,1.50);
+	\node[color=violet] at (6,1) {$a^2$};
+	
 	\node[color=violet] at (7,1) {+};
+	
 	\draw[fill=pink,pink] (7.5,0.25) rectangle (9.5,2.25);
+	\node[color=violet] at (8.5,1.25) {$b^2$};
+	%----------------------------------------------------------
 	
+	%----------------------------------------------------------
 	\draw[fill=lightViolet,lightViolet] (4.5,3.5) rectangle (5.5,4.5);
+	\draw[color=red] (4.5,4.5) -- (5.5,4.5);
+	\node[color=violet] at (5,4) {$a$};
 	
+	\draw[fill=pink,pink] (5.5,4.5) rectangle (7.5,6.5);
+	\draw[color=red] (5.5,4.5) -- (5.5,6.5);
+	\node[color=violet] at (6.5,5.5) {$b$};
+	
+	\draw[color=red] (4.5,4.5) -- (5.5,6.5);
+	
+	%90-degree will be drawn using two lines
+	\draw[color=blue] (5.25,4.75) -- (5.5,4.75);
+	\draw[color=blue] (5.25,4.5) -- (5.25,4.75);
+	%----------------------------------------------------------
 	
 	\end{tikzpicture}
+	
+	\caption{Visual representation of the famous Pythagorean theorem.}
+	\label{fig:1}
 \end{figure}
 
 \section{Trigonometric Forms}
@@ -75,4 +98,5 @@ Taking \ref{eqn:e1}, we can show them as shown in Figure2. When we take a point 
 unit distance from the origin, the $y$ and $x$ co-ordinates become $sin\theta$ and $cos\theta$
 respectively. Therefore, sum of the squares of the two becomes equal to the
 square of the unit distance, which of course, is 1.
+
 \end{document}
