@@ -2,6 +2,7 @@
 
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{color}
 \usepackage{tikz}
 
 %opening
@@ -11,12 +12,67 @@
 \begin{document}
 
 \maketitle
-
-
+\definecolor{lightViolet}{RGB}{164,117,169}
 
 \section{Introduction}
 In this document, we present the very famous theorem in mathematics: \textit{ Pythagorean
 theorem}, which is stated as follows.\\
 \\
-\textbf{Theorem 1.1 (Pythagorean theorem)}
+\textbf{Theorem 1.1 (Pythagorean theorem)}\textit{The square of the hypotenuse (the
+	side opposite the right angle) is equal to the sum of the squares of the other two
+	sides.}\\
+\\
+Numerous mathematicians proposed various proofs to the theorem. The
+theorem was long known even before the time of Pythagoras. Pythagoras was
+the first to provide with a sound proof. The proof that Pythagoras gave was
+by \textit{rearrangement}. Even the great Albert Einstein also proved the theorem
+without rearrangement, rather by using dissection. Figure 1 shows the visual
+representation of the theorem.\\\\
+
+\begin{figure}[h]
+	\centering
+	
+	
+	
+	\begin{tikzpicture}[scale=0.75]
+	
+	
+	\draw[help lines,step=1cm,gray,very thin] (0,0) grid (10,8); 
+	
+	\draw[fill=cyan,cyan] (2,0) rectangle (4.5,2.5);
+	\node[color=violet] at (5,1) {=};
+	\draw[fill=lightViolet,lightViolet] (5.5,0.50) rectangle (6.5,1.50);
+	\node[color=violet] at (7,1) {+};
+	\draw[fill=pink,pink] (7.5,0.25) rectangle (9.5,2.25);
+	
+	\draw[fill=lightViolet,lightViolet] (4.5,3.5) rectangle (5.5,4.5);
+	
+	
+	\end{tikzpicture}
+\end{figure}
+
+\section{Trigonometric Forms}
+Lots of other forms of the same theorem exist. The most useful, perhaps, are
+expressed in trigonometric terms, as follows:\\
+
+\begin{equation}
+	sin^2\theta + cos^2\theta = 1
+	\label{eqn:e1}
+\end{equation}
+
+\begin{equation}
+	sec^2\theta - tan^2\theta = 1 
+	\label{eqn:e2}
+\end{equation}
+
+\begin{equation}
+	cosec^2\theta - cot^2\theta = 1
+	\label{eqn:e3}
+\end{equation}
+
+\subsection{Representing the First}
+Taking \ref{eqn:e1}, we can show them as shown in Figure2. When we take a point at
+unit distance from the origin, the $y$ and $x$ co-ordinates become $sin\theta$ and $cos\theta$
+respectively. Therefore, sum of the squares of the two becomes equal to the
+square of the unit distance, which of course, is 1.
 \end{document}
